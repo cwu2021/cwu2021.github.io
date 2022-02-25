@@ -12,7 +12,7 @@ RUN groupadd -r nexus -f -g 1001 \
 USER nexus
 ADD nexus-${NEXUS_VERSION}-bundle.tar.gz ${NEXUS_HOME}
 ADD nexus-start.sh ${NEXUS_HOME}/
-RUN ln -s ${NEXUS_HOME}/nexus-${NEXUS_VERSION} ${NEXUS_HOME}/nexus2WORKDIR ${NEXUS_HOME}
+RUN ln -s ${NEXUS_HOME}/nexus-${NEXUS_VERSION} ${NEXUS_HOME}/nexus2
 WORKDIR ${NEXUS_HOME}
 VOLUME ["/opt/nexus/sonatype-work"]
 CMD ["sh", "nexus-start.sh"]
