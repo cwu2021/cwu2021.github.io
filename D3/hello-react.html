@@ -1,0 +1,31 @@
+<!-- https://ithelp.ithome.com.tw/articles/10156145 -->
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.11.1.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
+  
+  
+    <div id="example"></div>
+    <script type="text/jsx">
+
+      // ** 您的程式碼應該在此 **
+      /** @jsx React.DOM */
+
+var HelloWorld = React.createClass({
+  render: function() {
+    return (
+      <p>
+        Hello, <input type="text" placeholder="Your name here" />!
+        It is {this.props.date.toTimeString()}
+      </p>
+    );
+  }
+});
+
+setInterval(function() {
+  React.renderComponent(
+    <HelloWorld date={new Date()} />,
+    document.getElementById('example')
+  );
+}, 500);
+
+    </script>
