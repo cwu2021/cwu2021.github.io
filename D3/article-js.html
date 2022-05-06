@@ -1,0 +1,66 @@
+<!-- https://news.tvbs.com.tw/events/election20220109 -->
+                   //議題包&playlist區塊
+                   var issue_list = "";
+                    var issue_playlist1 = data.issue_playlist.issue_playlist_data.issue_playlist1;
+                    var issue_playlist2 = data.issue_playlist.issue_playlist_data.issue_playlist2;
+                    var issue_playlist3 = data.issue_playlist.issue_playlist_data.issue_playlist3;
+                    var issue_playlist4 = data.issue_playlist.issue_playlist_data.issue_playlist4;
+                    var issue_array = [];
+                        
+                        if(issue_playlist1!=undefined){
+                            issue_array.push(issue_playlist1);
+                        }
+                        if(issue_playlist2!=undefined){
+                            issue_array.push(issue_playlist2);
+                        }
+                        if(issue_playlist3!=undefined){
+                            issue_array.push(issue_playlist3);
+                        }
+                        if(issue_playlist4!=undefined){
+                            issue_array.push(issue_playlist4);
+                        }
+                                        
+                    
+
+                        
+                        
+                        
+
+                    for (var i = 0; i < issue_array.length; i++) {
+                        issue_list += '<div class="box"><div class="title_box"><h2 class="title">'+issue_array[i][0].big_title+'</h2></div><div class="list1';
+                        if(issue_array[i][0].playlist=="yes"){ //判斷是否為playlist
+                            issue_list +=' playlist'; 
+                        }
+                        issue_list +='"><ul>';
+                        for (var j = 0; j < issue_array[i].length; j++) {
+                            issue_list += '<li><a href="'+issue_array[i][j].link+'?from=election20220109-';
+                            if(issue_array[i][0].playlist=="yes"){ //判斷是否為playlist
+                            issue_list +='playlist'; 
+                            }else{
+                                issue_list +='packnews';
+                            }
+                            issue_list += '-'+issue_array[i][j].id+'" target="_blank">';
+
+                            issue_list += '<div class="img">';
+                            if(issue_array[i][j].playicon!="0"){
+                                //play_icon
+                                issue_list +='<div class="play"><img src="https://news.tvbs.com.tw/events/election20220109/images/icon_play.svg?v=_prd"></div>';
+                                 }
+                            issue_list +='<img src="'+issue_array[i][j].images+'"></div><div class="txt"><h3>'+issue_array[i][j].title+'</h3><div class="time">'+issue_array[i][j].published_date+'</div></div></a></li>';
+                        }
+                        issue_list += '</ul></div><div class="more_box"><div class="more"><a href="https://news.tvbs.com.tw/pack/packdetail/'+issue_array[i][0].id+'?from=election20220109-';
+                        if(issue_array[i][0].playlist=="yes"){ //判斷是否為playlist
+                            issue_list +='playlist'; 
+                            }else{
+                                issue_list +='packnews';
+                            }
+                        issue_list += '-'+issue_array[i][0].id+'" target="_blank"><p>看更多</p></a></div></div></div>';
+                    }
+
+                                      
+                    //每次refresh 清空完再重新append子元素
+                    $(".issue_playlist").empty();
+                    $(".issue_playlist").append(issue_list);
+                    
+            <!--文章-->
+            <div class="section white issue_playlist"></div>
