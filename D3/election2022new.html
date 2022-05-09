@@ -218,7 +218,7 @@
                             if (data.taichung_vote.elections != 0) {
                                 var final_win = parseInt(data.taichung_vote.elections);
                                 //台中表格戳記
-                                $("tr:nth-child(" + (final_win + 1) + ") .ok").html('<img src="events/images/vote.png?v=_prd">');
+                                $("tr:nth-child(" + (final_win + 1) + ") .ok").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/?v=_prd">');
 
 
                                 //表格顯示
@@ -256,7 +256,7 @@
                                 for (var j = 0; j < issue_array[i].length && j < 6; j++) {
                                     var timestamp = issue_array[i][j].attributes.article_date_created * 1000;
                                     var vdate = new Date(timestamp);
-                                    issue_list += '<li><a href="'https://www.ntdtv.com.tw + issue_array[i][j].attributes.article_uri + '" target="_blank">';
+                                    issue_list += '<li><a href="https://www.ntdtv.com.tw' + issue_array[i][j].attributes.article_uri + '" target="_blank">';
                                     vimg = issue_array[i][j].attributes.article_thumbnail_src["data-src-medium"];
                                     issue_list += '<div class="img">' + '<img src="' + vimg + '"></div>'
                                     issue_list += '<div class="txt"><h3>' + issue_array[i][j].attributes.article_headline + '</h3><div class="time">' + vdate.getFullYear() + '-' + (vdate.getMonth() + 1) + '-' + vdate.getDate() + ' ' + vdate.getHours() + ":" + vdate.getMinutes() + ":" + vdate.getSeconds() + '</div></div></a></li>';
