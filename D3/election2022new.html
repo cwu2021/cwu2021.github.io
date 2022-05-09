@@ -9,238 +9,228 @@
     <script type="text/javascript" src="https://news.tvbs.com.tw/events/election20220109/js/election20220109.js?v=_prd"></script>
     <!--js-->
     <script type="text/javascript">
-        $(document).ready(function () {
-            /*gotop*/
-            var $window = $(window);
-            var $nav_top = $('header').offset().top;
-            
-            function scroll() {    
-                var $header_h=$('header').height();        
-                if ($window.width() < 768) {
-                    if ($window.scrollTop() > $nav_top) {
-                        $('.header_fixed').css({ height:$header_h});
-                        $('header').css({ position: 'fixed' });
+            $(document).ready(function () {
+                /*gotop*/
+                var $window = $(window);
+                var $nav_top = $('header').offset().top;
+
+                function scroll() {
+                    var $header_h = $('header').height();
+                    if ($window.width() < 768) {
+                        if ($window.scrollTop() > $nav_top) {
+                            $('.header_fixed').css({ height: $header_h });
+                            $('header').css({ position: 'fixed' });
+                        } else {
+                            $('.header_fixed').css({ height: 0 });
+                            $('header').css({ position: 'relative' });
+                        }
                     } else {
-                        $('.header_fixed').css({ height:0});
+                        $('.header_fixed').css({ height: 0 });
                         $('header').css({ position: 'relative' });
                     }
-                }else{
-                    $('.header_fixed').css({ height:0});
-                    $('header').css({ position: 'relative' });
-                }
-                
-               //gototop
-            if ($window.scrollTop() > 50) {
-                    $('#back').show();   
-                } else {
-                    $('#back').hide();
-            }
-                
-            }
-            $window.scroll(function () { scroll(); });
-            $window.resize(function () { scroll(); });
-            var $el = $(scrollableElement('html', 'body'));
-            var speed = 550;
-            var $iconTOP = $('#back-img1');
-            var $icon_rbtn = $('.r_btn');
 
-            $($iconTOP).click(function (event) {
-                event.preventDefault();
-                $el.stop().animate({ scrollTop: -50 }, speed);
-            });
-            // 透過scrollTop檢測可用元素的函數// http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links#update4
-            function scrollableElement() {
-                var i, len, el, $el, scrollable;
-                for (i = 0, len = arguments.length; i < len; i++) {
-                    el = arguments[i];
-                    $el = $(el);
-                    if ($el.scrollTop() > 0) {
-
-                        return el;
+                    //gototop
+                    if ($window.scrollTop() > 50) {
+                        $('#back').show();
                     } else {
-                        $el.scrollTop(1);
-                        scrollable = $el.scrollTop() > 0;
-                        $el.scrollTop(0);
-                        if (scrollable) {
-                            return el;
-                        }
+                        $('#back').hide();
                     }
+
                 }
-                return [];
-            }
-            /*--------------------------------------------------------- */
-            //立委補選開票結果切換區域
-            $('nav .list li').each(function (i) {
-                $(this).click(function (i) {
-                    $('nav .list li').removeClass('act');
-                    $(this).addClass('act');
+                $window.scroll(function () { scroll(); });
+                $window.resize(function () { scroll(); });
+                var $el = $(scrollableElement('html', 'body'));
+                var speed = 550;
+                var $iconTOP = $('#back-img1');
+                var $icon_rbtn = $('.r_btn');
+
+                $($iconTOP).click(function (event) {
+                    event.preventDefault();
+                    $el.stop().animate({ scrollTop: -50 }, speed);
                 });
-            });
+                // 透過scrollTop檢測可用元素的函數// http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links#update4
+                function scrollableElement() {
+                    var i, len, el, $el, scrollable;
+                    for (i = 0, len = arguments.length; i < len; i++) {
+                        el = arguments[i];
+                        $el = $(el);
+                        if ($el.scrollTop() > 0) {
 
-            //
-            var ajax_data;
-            var counter=10; 
-            function refresh(){
-                var timestamp = new Date().getTime();
-                var url = "https://news.tvbs.com.tw/events/election20220109/json/final_data.json?v=_prd&t="+timestamp;
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    datatype: "text",
-                    async:false,
-                    success: function(data) {
-                    counter=10;
-                    //給開票結果表格使用
-                    ajax_data=data;
-
-                    //banner台中票數
-                    //跑數字   
-                    var
-                        options = {
-                            useEasing: true,
-                            useGrouping: true,
-                            separator: ',',
-                            decimal: '.',
-                        };
-                    var votes_total = [0, 0];
-                    var votes_num = [0, 0];
-                    votes_total = [data.taichung_vote_for_main.no5_vote_total,data.taichung_vote_for_main.no4_vote_total];
-                    //票數加總
-                    var votes_total_sum = 0;
-                    var votes_sum = 0;
-                    for (var i = 0; i < votes_num.length; i++) {
-                        votes_total_sum += votes_total[i];
-                        votes_sum += votes_num[i];
-                    };
-                    var votes_total_percent = new Array();
-                    var votes_percent = new Array();
-
-                    $('header .name_box .num').each(function (i) {
-                        //banner各自票數不為0，才會顯示
-                        if(votes_total[i]!==0&&votes_total[i]!=="0"){
-                        $(this).html('<span id=nu2_' + i + '>' + Math.round(votes_total[i]) + '</span>');
-                        //跑數字   
-                        var demo = new CountUp('nu2_' + i, 0, Math.round(votes_total[i]), 0, 1.5, options);
-                        if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                            return el;
+                        } else {
+                            $el.scrollTop(1);
+                            scrollable = $el.scrollTop() > 0;
+                            $el.scrollTop(0);
+                            if (scrollable) {
+                                return el;
+                            }
                         }
-
+                    }
+                    return [];
+                }
+                /*--------------------------------------------------------- */
+                //立委補選開票結果切換區域
+                $('nav .list li').each(function (i) {
+                    $(this).click(function (i) {
+                        $('nav .list li').removeClass('act');
+                        $(this).addClass('act');
                     });
-                    
+                });
 
-                    //banner戳記
-                    var banner_final_win=data.taichung_vote_for_main.elections;
-                    if(banner_final_win==4){
-                        $(".win2").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/vote.png?v=_prd">');
-                    }
-                    if(banner_final_win==5){
-                        $(".win").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/vote.png?v=_prd">');
-                    }
-                    //banner戳記 end
+                //
+                var ajax_data;
+                var counter = 10;
+                function refresh() {
+                    var timestamp = new Date().getTime();
+                    var url = "https://news.tvbs.com.tw/events/election20220109/json/final_data.json?v=_prd&t=" + timestamp;
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        datatype: "text",
+                        async: false,
+                        success: function (data) {
+                            counter = 10;
+                            //給開票結果表格使用
+                            ajax_data = data;
+
+                            //banner台中票數
+                            //跑數字   
+                            var
+                                options = {
+                                    useEasing: true,
+                                    useGrouping: true,
+                                    separator: ',',
+                                    decimal: '.',
+                                };
+                            var votes_total = [0, 0];
+                            var votes_num = [0, 0];
+                            votes_total = [data.taichung_vote_for_main.no5_vote_total, data.taichung_vote_for_main.no4_vote_total];
+                            //票數加總
+                            var votes_total_sum = 0;
+                            var votes_sum = 0;
+                            for (var i = 0; i < votes_num.length; i++) {
+                                votes_total_sum += votes_total[i];
+                                votes_sum += votes_num[i];
+                            };
+                            var votes_total_percent = new Array();
+                            var votes_percent = new Array();
+
+                            $('header .name_box .num').each(function (i) {
+                                //banner各自票數不為0，才會顯示
+                                if (votes_total[i] !== 0 && votes_total[i] !== "0") {
+                                    $(this).html('<span id=nu2_' + i + '>' + Math.round(votes_total[i]) + '</span>');
+                                    //跑數字   
+                                    var demo = new CountUp('nu2_' + i, 0, Math.round(votes_total[i]), 0, 1.5, options);
+                                    if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                                }
+
+                            });
 
 
+                            //banner戳記
+                            var banner_final_win = data.taichung_vote_for_main.elections;
+                            if (banner_final_win == 4) {
+                                $(".win2").html('<img src="events/images/vote.png?v=_prd">');
+                            }
+                            if (banner_final_win == 5) {
+                                $(".win").html('<img src="events/images/vote.png?v=_prd">');
+                            }
+                            //banner戳記 end
+                            //banner台中票數 end
+                            //罷免票數
+                            var wanhua_votes_total = [0, 0];
+                            var wanhua_votes_num = [0, 0];
+                            wanhua_votes_total = [data.recall.yes_vote, data.recall.no_vote];
+                            //票數加總
+                            var wanhua_votes_total_sum = 0;
+                            var wanhua_votes_sum = 0;
+                            for (var i = 0; i < wanhua_votes_num.length; i++) {
+                                wanhua_votes_total_sum += wanhua_votes_total[i];
+                                wanhua_votes_sum += wanhua_votes_num[i];
+                            };
+                            var wanhua_votes_total_percent = new Array();
+                            var wanhua_votes_percent = new Array();
 
-                    //banner台中票數 end
+                            //罷免票數若為0，隱藏區塊
+                            $('.bt_num').each(function (i) {
+                                if (wanhua_votes_total[i] == 0) {
+                                    $("#bt_num0").hide();
+                                    $("#bt_num1").hide();
+                                } else {
+                                    $("#bt_num0").show();
+                                    $("#bt_num1").show();
+                                    $(this).html(Math.round(wanhua_votes_total[i]));
+                                    //跑數字   
+                                    var demo = new CountUp('bt_num' + i, 0, Math.round(wanhua_votes_total[i]), 0, 1.5, options);
+                                    if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+
+                                }
+
+                            });
 
 
-                    //罷免票數
-                    var wanhua_votes_total = [0, 0];
-                    var wanhua_votes_num = [0, 0];
-                    wanhua_votes_total = [data.recall.yes_vote, data.recall.no_vote];
-                    //票數加總
-                    var wanhua_votes_total_sum = 0;
-                    var wanhua_votes_sum = 0;
-                    for (var i = 0; i < wanhua_votes_num.length; i++) {
-                        wanhua_votes_total_sum += wanhua_votes_total[i];
-                        wanhua_votes_sum += wanhua_votes_num[i];
-                    };
-                    var wanhua_votes_total_percent = new Array();
-                    var wanhua_votes_percent = new Array();
+                            //罷免戳記
+                            if (data.recall.recall == "1") {
+                                $(".stamp").html('<img src="events/images/stamp1.png?v=_prd">');
+                            } else if (data.recall.recall == "2") {
+                                $(".stamp").html('<img src="events/images/stamp2.png?v=_prd">');
+                            }
 
-                    //罷免票數若為0，隱藏區塊
-                    $('.bt_num').each(function (i) {
-                        if(wanhua_votes_total[i]==0){
-                            $("#bt_num0").hide();
-                            $("#bt_num1").hide();
-                        }else{
-                            $("#bt_num0").show();
-                            $("#bt_num1").show();
-                         $(this).html( Math.round(wanhua_votes_total[i]) );
-                        //跑數字   
-                        var demo = new CountUp('bt_num' + i, 0, Math.round(wanhua_votes_total[i]), 0, 1.5, options);
-                        if (!demo.error) { demo.start(); } else { console.error(demo.error); }
 
+                            //最後更新時間
+                            $('.time2').html('最後更新時間： ' + data.now + '<br>( 網頁於每<span class="ten_sec_limit">' + counter + '</span>秒自動更新 )');
+
+
+                            //台中表格
+                            var taichung1 = data.taichung_vote.all;
+                            var taichung2 = data.taichung_vote.shalu;
+                            var taichung3 = data.taichung_vote.longjing;
+                            var taichung4 = data.taichung_vote.dadu;
+                            var taichung5 = data.taichung_vote.wuri;
+                            var taichung6 = data.taichung_vote.wufong;
+                            var taichung_array = [taichung1, taichung2, taichung3, taichung4, taichung5, taichung6];
+                            var now_choose = $(".tab_box").find(".act").index(); //抓取所選擇的區域index
+                            //跑數字   
+                            var taichung_votes_total = [0, 0];
+                            var taichung_votes_num = [0, 0];
+                            taichung_votes_total = [taichung_array[now_choose].no1_vote, taichung_array[now_choose].no2_vote, taichung_array[now_choose].no3_vote, taichung_array[now_choose].no4_vote, taichung_array[now_choose].no5_vote];
+
+                            //票數加總
+                            var taichung_votes_total_sum = 0;
+                            var taichung_votes_sum = 0;
+                            for (var i = 0; i < taichung_votes_num.length; i++) {
+                                taichung_votes_total_sum += votes_total[i];
+                                taichung_votes_sum += votes_num[i];
+                            };
+                            var taichung_votes_total_percent = new Array();
+                            var taichung_votes_percent = new Array();
+
+
+                            $('.num3').each(function (i) {
+                                $(this).html(Math.round(taichung_votes_total[i]));
+                                //跑數字   
+                                var demo = new CountUp('final_num_' + i, 0, Math.round(taichung_votes_total[i]), 0, 1.5, options);
+                                if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                            });
+
+                            //台中表格 end
+                            //台中表格當選戳記&表格顯示
+                            if (data.taichung_vote.elections != 0) {
+                                var final_win = parseInt(data.taichung_vote.elections);
+                                //台中表格戳記
+                                $("tr:nth-child(" + (final_win + 1) + ") .ok").html('<img src="events/images/vote.png?v=_prd">');
+
+
+                                //表格顯示
+                                $(".taichung_table").show();
+                            } else {
+                                //表格隱藏
+                                $(".taichung_table").hide();
+                            }
                         }
-
                     });
+                }
 
-
-                    //罷免戳記
-                    if(data.recall.recall=="1"){
-                        $(".stamp").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/stamp1.png?v=_prd">');
-                    }else if(data.recall.recall=="2"){
-                        $(".stamp").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/stamp2.png?v=_prd">');
-                    }
-
-
-                    //最後更新時間
-                    $('.time2').html('最後更新時間： '+data.now+'<br>( 網頁於每<span class="ten_sec_limit">'+counter+'</span>秒自動更新 )');
-
-
-                    //台中表格
-                    var taichung1 = data.taichung_vote.all;
-                    var taichung2 = data.taichung_vote.shalu;
-                    var taichung3 = data.taichung_vote.longjing;
-                    var taichung4 = data.taichung_vote.dadu;
-                    var taichung5 = data.taichung_vote.wuri;
-                    var taichung6 = data.taichung_vote.wufong;
-                    var taichung_array=[taichung1,taichung2,taichung3,taichung4,taichung5,taichung6];
-                    var now_choose = $(".tab_box").find(".act").index(); //抓取所選擇的區域index
-
-                    
-
-                    //跑數字   
-                    var taichung_votes_total = [0, 0];
-                    var taichung_votes_num = [0, 0];
-                    taichung_votes_total = [taichung_array[now_choose].no1_vote, taichung_array[now_choose].no2_vote, taichung_array[now_choose].no3_vote,taichung_array[now_choose].no4_vote,taichung_array[now_choose].no5_vote];
-
-                    //票數加總
-                    var taichung_votes_total_sum = 0;
-                    var taichung_votes_sum = 0;
-                    for (var i = 0; i < taichung_votes_num.length; i++) {
-                        taichung_votes_total_sum += votes_total[i];
-                        taichung_votes_sum += votes_num[i];
-                    };
-                    var taichung_votes_total_percent = new Array();
-                    var taichung_votes_percent = new Array();
-
-                   
-                    $('.num3').each(function (i) {
-                        $(this).html( Math.round(taichung_votes_total[i]));
-                        //跑數字   
-                        var demo = new CountUp('final_num_' + i, 0, Math.round(taichung_votes_total[i]), 0, 1.5, options);
-                        if (!demo.error) { demo.start(); } else { console.error(demo.error); }
-                    });
-
-                    //台中表格 end
-
-
-
- 
-
-                    //台中表格當選戳記&表格顯示
-                    if(data.taichung_vote.elections!=0){
-                    var final_win=parseInt(data.taichung_vote.elections);
-                    //台中表格戳記
-                    $("tr:nth-child("+(final_win+1)+") .ok").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/vote.png?v=_prd">');
-
-
-                    //表格顯示
-                    $(".taichung_table").show();
-                    }else{
-                        //表格隱藏
-                        $(".taichung_table").hide();
-                    }
-                    
                 function refresh_news() {
                     var timestamp = new Date().getTime();
                     var url = "1.json";
@@ -251,9 +241,8 @@
                         datatype: "text",
                         async: false,
                         success: function (data) {
-                            var issue_array = [];                    
-
-                    //議題包&playlist區塊
+                            var issue_array = [];
+                            //議題包&playlist區塊
                             var issue_list = "";
                             if (data.data != undefined) {
                                 issue_array.push(data.data);
@@ -279,39 +268,37 @@
                             //每次refresh 清空完再重新append子元素
                             $(".issue_playlist").empty();
                             $(".issue_playlist").append(issue_list);
+                        }
+                    });
+                }
+
+                //每秒執行 倒數10秒 網頁自動更新時間
+                var countdown_func = setInterval(countdown, 1000);
+                //var countdown_func = setInterval(countdown, 100000000000000);
+                function countdown() {
+                    counter--;
+                    $(".ten_sec_limit").html(counter);
+                    if (counter == 0) {
+                        counter = 10;
+                        //10秒一到 重拉一次資料
+                        refresh();
+                        refresh_news();
+                    }
+
                 }
 
 
-                });
-
-  
-            }
-
-             //每秒執行 倒數10秒 網頁自動更新時間
-             var countdown_func= setInterval(countdown,1000);
-
-            function countdown(){     
-                counter--;
-                $(".ten_sec_limit").html(counter);
-                if(counter==0){
-                    counter=10;
-                    //10秒一到 重拉一次資料
+                //票數更新 按鈕
+                $(".btn").click(function () {
                     refresh();
-                }
-                
-            }
-
-            
-            //票數更新 按鈕
-            $(".btn").click(function(){
-                refresh();          
-            })
+                    refresh_news();
+                })
 
 
-  
 
-                    //台中表格區域click
-                    $(".tab_box .tab").click(function(){
+
+                //台中表格區域click
+                $(".tab_box .tab").click(function () {
                     var eq_1 = $(this).index();
                     var taichung1 = ajax_data.taichung_vote.all;
                     var taichung2 = ajax_data.taichung_vote.shalu;
@@ -319,7 +306,7 @@
                     var taichung4 = ajax_data.taichung_vote.dadu;
                     var taichung5 = ajax_data.taichung_vote.wuri;
                     var taichung6 = ajax_data.taichung_vote.wufong;
-                    var taichung_array=[taichung1,taichung2,taichung3,taichung4,taichung5,taichung6];
+                    var taichung_array = [taichung1, taichung2, taichung3, taichung4, taichung5, taichung6];
 
                     //跑數字   
                     var
@@ -329,9 +316,9 @@
                             separator: ',',
                             decimal: '.',
                         };
-                        var taichung_votes_total = [0, 0];
+                    var taichung_votes_total = [0, 0];
                     var taichung_votes_num = [0, 0];
-                    taichung_votes_total = [taichung_array[eq_1].no1_vote, taichung_array[eq_1].no2_vote, taichung_array[eq_1].no3_vote,taichung_array[eq_1].no4_vote,taichung_array[eq_1].no5_vote];
+                    taichung_votes_total = [taichung_array[eq_1].no1_vote, taichung_array[eq_1].no2_vote, taichung_array[eq_1].no3_vote, taichung_array[eq_1].no4_vote, taichung_array[eq_1].no5_vote];
 
                     //票數加總
                     var taichung_votes_total_sum = 0;
@@ -343,9 +330,9 @@
                     var taichung_votes_total_percent = new Array();
                     var taichung_votes_percent = new Array();
 
-                   
+
                     $('.num3').each(function (i) {
-                        $(this).html( Math.round(taichung_votes_total[i]));
+                        $(this).html(Math.round(taichung_votes_total[i]));
                         //跑數字   
                         var demo = new CountUp('final_num_' + i, 0, Math.round(taichung_votes_total[i]), 0, 1.5, options);
                         if (!demo.error) { demo.start(); } else { console.error(demo.error); }
@@ -354,26 +341,17 @@
 
                     $(".tab_box div").removeClass("act"); //清掉原先的 已選取
                     $(this).addClass("act");
-                    });
+                });
 
-
-                    
-
-
-
-
-
-
-            //document ready 直接抓資料下來
-            refresh();
-            //5分鐘整頁重整
-            setInterval(refresh2,300000);
-            function refresh2(){
-                window.location.reload();
-            }
-        });
-
-
+                //document ready 直接抓資料下來
+                refresh();
+                refresh_news();
+                //5分鐘整頁重整
+                setInterval(refresh2, 300000);
+                function refresh2() {
+                    window.location.reload();
+                }
+            });
     </script>
     <!--js ed-->
 
