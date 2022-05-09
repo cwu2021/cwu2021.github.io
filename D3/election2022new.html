@@ -256,7 +256,7 @@
                                 for (var j = 0; j < issue_array[i].length && j < 6; j++) {
                                     var timestamp = issue_array[i][j].attributes.article_date_created * 1000;
                                     var vdate = new Date(timestamp);
-                                    issue_list += '<li><a href="' + issue_array[i][j].attributes.article_uri + '" target="_blank">';
+                                    issue_list += '<li><a href="'https://www.ntdtv.com.tw + issue_array[i][j].attributes.article_uri + '" target="_blank">';
                                     vimg = issue_array[i][j].attributes.article_thumbnail_src["data-src-medium"];
                                     issue_list += '<div class="img">' + '<img src="' + vimg + '"></div>'
                                     issue_list += '<div class="txt"><h3>' + issue_array[i][j].attributes.article_headline + '</h3><div class="time">' + vdate.getFullYear() + '-' + (vdate.getMonth() + 1) + '-' + vdate.getDate() + ' ' + vdate.getHours() + ":" + vdate.getMinutes() + ":" + vdate.getSeconds() + '</div></div></a></li>';
