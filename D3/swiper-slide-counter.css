@@ -1,0 +1,27 @@
+ /* https://codepen.io/jeremyLuis/pen/EWRxjZ?html-preprocessor=pug */
+.swiper-slide {
+  height: 300px;
+  width: 100%;
+  background-image: url(https://www.w3schools.com/css/trolltunga.jpg)
+}
+
+.swiper-container {
+    width: 600px;
+    height: 300px;
+}
+.swiper-counter, .swiper-counter span {
+  position: relative;
+  bottom:10px;
+  right: 10px;
+  z-index: 99999;
+  font-size: 30px;
+  color: #fff;
+}
+.swiper-counter .next, .swiper-counter .count {
+  position:absolute;
+}
+
+.swiper-counter .next {
+  transform:translateY(-12px);
+  right: 10px;
+}
