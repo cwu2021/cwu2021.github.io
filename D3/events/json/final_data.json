@@ -1,0 +1,90 @@
+{
+  "taichung_vote_for_main": {
+    "id": "1",
+    "no4_vote_total": "88752",
+    "no5_vote_total": "80912",
+    "elections": "4",
+    "taichung_vote_for_two_date": "2022-01-09 17:58:48",
+    "taichung_vote_for_two_user": "aazona83"
+  },
+  "taichung_vote": {
+    "all": {
+      "no1_vote": 337,
+      "no2_vote": 633,
+      "no3_vote": 617,
+      "no4_vote": 88752,
+      "no5_vote": 80912
+    },
+    "shalu": {
+      "id": "1",
+      "district": "沙鹿區",
+      "no1_vote": "87",
+      "no2_vote": "156",
+      "no3_vote": "173",
+      "no4_vote": "22025",
+      "no5_vote": "21194",
+      "elections": "4",
+      "taichung_vote_update_time": "2022-01-09 19:09:39",
+      "taichung_vote_update_user": "markyao"
+    },
+    "longjing": {
+      "id": "2",
+      "district": "龍井區",
+      "no1_vote": "66",
+      "no2_vote": "130",
+      "no3_vote": "117",
+      "no4_vote": "18041",
+      "no5_vote": "17417",
+      "elections": "4",
+      "taichung_vote_update_time": "2022-01-09 19:09:39",
+      "taichung_vote_update_user": "markyao"
+    },
+    "dadu": {
+      "id": "3",
+      "district": "大肚區",
+      "no1_vote": "54",
+      "no2_vote": "96",
+      "no3_vote": "110",
+      "no4_vote": "13618",
+      "no5_vote": "13136",
+      "elections": "4",
+      "taichung_vote_update_time": "2022-01-09 19:09:39",
+      "taichung_vote_update_user": "markyao"
+    },
+    "wuri": {
+      "id": "4",
+      "district": "烏日區",
+      "no1_vote": "62",
+      "no2_vote": "148",
+      "no3_vote": "124",
+      "no4_vote": "19078",
+      "no5_vote": "15133",
+      "elections": "4",
+      "taichung_vote_update_time": "2022-01-09 19:09:39",
+      "taichung_vote_update_user": "markyao"
+    },
+    "wufong": {
+      "id": "5",
+      "district": "霧峰區",
+      "no1_vote": "68",
+      "no2_vote": "103",
+      "no3_vote": "93",
+      "no4_vote": "15990",
+      "no5_vote": "14032",
+      "elections": "4",
+      "taichung_vote_update_time": "2022-01-09 19:09:39",
+      "taichung_vote_update_user": "markyao"
+    },
+    "elections": "4"
+  },
+  "recall": {
+    "id": "1",
+    "yes_vote": "54813",
+    "no_vote": "43340",
+    "invalid_vote": "0",
+    "recall": "2",
+    "recall_vote_update_time": "2022-01-09 17:57:08",
+    "recall_vote_update_user": "dev001"
+  },
+  "now": "2022/05/08 17:22:02"
+}
