@@ -274,25 +274,86 @@
                     });
                 }
 
-                //每秒執行 倒數10秒 網頁自動更新時間
-                var countdown_func = setInterval(countdown, 1000);
-                //var countdown_func = setInterval(countdown, 100000000000000);
-                function countdown() {
-                    counter--;
-                    $(".ten_sec_limit").html(counter);
-                    if (counter == 0) {
-                        counter = 10;
-                        //10秒一到 重拉一次資料
-                        refresh();
-                        refresh_news();
-                    }
+            function refresh_city(city_name) {
+                var timestamp = new Date().getTime();
+                var url = "events/json/final_data_" + city_name + ".json?v=_prd&t=" + timestamp;
 
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    datatype: "text",
+                    async: false,
+                    success: function (data) {
+                        var
+                            options = {
+                                useEasing: true,
+                                useGrouping: true,
+                                separator: ',',
+                                decimal: '.',
+                            };
+                        var votes_total = [0, 0];
+                        var votes_num = [0, 0];
+                        votes_total = [data.vote_for_main.no1_vote_total, data.vote_for_main.no2_vote_total];
+                        //票數加總
+                        var votes_total_sum = 0;
+                        var votes_sum = 0;
+                        for (var i = 0; i < votes_num.length; i++) {
+                            votes_total_sum += votes_total[i];
+                            votes_sum += votes_num[i];
+                        };
+                        var votes_total_percent = new Array();
+                        var votes_percent = new Array();
+                        var search_pattern = 'header .' + city_name + ' .name_box .num';
+
+                        $(search_pattern).each(function (i) {
+                            //banner各自票數不為0，才會顯示
+                            if (votes_total[i] !== 0 && votes_total[i] !== "0") {
+                                $(this).html('<span id=nu2_' + city_name + i + '>' + Math.round(votes_total[i]) + '</span>');
+                                //跑數字
+                                var demo = new CountUp('nu2_' + city_name + i, 0, Math.round(votes_total[i]), 0, 1.5, options);
+                                if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                            }
+
+                        });
+                        
+                        //banner戳記
+                        var banner_final_win = data.vote_for_main.elections;
+                        var search_pattern_win1 = 'header .' + city_name + ' .name_box .name_box1 .win';
+                        var search_pattern_win2 = 'header .' + city_name + ' .name_box .name_box1 .win2';
+                        if (banner_final_win == 1) {
+                            $(search_pattern_win1).html('<img src="events/images/vote.png?v=_prd">');
+                        } else if (banner_final_win == 2) {
+                            $(search_pattern_win2).html('<img src="events/images/vote.png?v=_prd">');
+                        }
+                    }
+                });
+            }
+                
+            function refresh_all_city() {
+                refresh_city("Taipei");
+                refresh_city("NewTaipei");
+            }
+
+            //每秒執行 倒數10秒 網頁自動更新時間
+            var countdown_func = setInterval(countdown, 1000);
+            //var countdown_func = setInterval(countdown, 100000000000000);
+            function countdown() {
+                counter--;
+                $(".ten_sec_limit").html(counter);
+                if (counter == 0) {
+                    counter = 10;
+                    //10秒一到 重拉一次資料
+                    refresh();
+                    refresh_all_city();
+                    refresh_news();
                 }
 
+            }            
 
                 //票數更新 按鈕
                 $(".btn").click(function () {
                     refresh();
+                    refresh_all_city();
                     refresh_news();
                 })
 
@@ -347,6 +408,7 @@
 
                 //document ready 直接抓資料下來
                 refresh();
+                refresh_all_city();
                 refresh_news();
                 //5分鐘整頁重整
                 setInterval(refresh2, 300000);
@@ -369,58 +431,85 @@
             </div>                
     </div>
     <!--GO~Top end-->
-    <!--container主架構-->
+    <!-- Swiper -->
     <div class="container">
-        <!--header PC板-->
-        <div class="header_fixed"></div>
-        <header class="hbg1"> 
-            <div class="bg1"><a href="https://news.tvbs.com.tw/events/election20220109"><img src="1200x628.png?v=_prd"></a></div>     
-            <div class="bg2"><a href="https://news.tvbs.com.tw/events/election20220109"><img src="1200x628.png?v=_prd"></a></div>  
-              <!--票數-->
-              <div class="name_box">
-                <li>                    
-                    <div class="name_box1">                        
-                        <div class="name">
-                            <div class="win"></div>
-                            陳時中
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <header class="hbg1">
+                        <div class="bg1"><a href=""><img src="1200x628.png?v=_prd"></a></div>
+                        <div class="NewTaipei">
+                            <div class="name_box">
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win"></div>
+                                            陳時中_新北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win2"></div>
+                                            蔣萬安_新北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                            </div>
                         </div>
-                    </div>
-                    <div class="num"></div>
-                </li>
-                <li>                    
-                    <div class="name_box1">                        
-                        <div class="name">
-                            <div class="win2"></div> 
-                            蔣萬安
-                        </div>
-                    </div>
-                    <div class="num"></div>
-                </li>
-            </div>
-
-            <div class="votes_box">
-                <div class="line_box">
-                    <div class="dashed_box">
-                    </div>
+                    </header>
                 </div>
+                <div class="swiper-slide">
+                    <header class="hbg1">
+                        <div class="bg1"><a href=""><img src="1200x628.png?v=_prd"></a></div>
+                        <!--票數-->
+                        <div class="Taipei">
+                            <div class="name_box">
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win"></div>
+                                            陳時中_台北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win2"></div>
+                                            蔣萬安_台北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <!-- <div class="swiper-slide">Slide 3</div> -->
             </div>
-            <!--票數ed-->
-        </header>
-        <!--header PC板 ed-->
-        <!--main-->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        
         <main>
             <!--罷免-->
             <div class="section gray">
                 <div class="box">
-                    <div class="man_box"> 
+                    <div class="man_box">
                         <div class="bt_box">
                             <div class="text_box">
                                 <div class="nabox">
                                     <div class="btn">票數更新</div>
-                                    <div class="time2">最後更新時間：2021/12/24 11：58：14 <br>( 網頁於每10秒自動更新 )<br>※最後票數結果以中選會公告為準</div>
+                                    <div class="time2">最後更新時間：2021/12/24 11：58：14 <br>( 網頁於每10秒自動更新
+                                        )<br>※最後票數結果以中選會公告為準</div>
                                 </div>
                             </div>
-                            <div class="small displayno">票數來源：開票過程來自TVBS報票/計票中心。結果依中選會公佈票數為準。</div>
+                            <div class="small displayno">票數來源：開票過程來自報票/計票中心。結果依中選會公佈票數為準。</div>
                         </div>
                     </div>
                 </div>
@@ -428,10 +517,10 @@
                 <div class="nabox2-1">
                     <div class="nabox2">
                         <div class="btn">票數更新</div>
-                        <div class="time2">最後更新時間：2021/12/24 11:58:14 <br>( 網頁於每10秒自動更新 )</div>                   
+                        <div class="time2">最後更新時間：2021/12/24 11:58:14 <br>( 網頁於每10秒自動更新 )</div>
                     </div>
-                    <div class="small">票數來源：開票過程來自TVBS報票/計票中心。結果依中選會公佈票數為準。</div> 
-               </div>
+                    <div class="small">票數來源：開票過程來自報票/計票中心。結果依中選會公佈票數為準。</div>
+                </div>
                 <!--end罷免-->
                 <!--更新-->
             </div>
@@ -522,7 +611,10 @@
                                    <div class="live_box">
                                    </div>
                                    <div class="video">
-                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/wSKE3A40SIk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                     <iframe width="100%" height="100%"
+                                        src="https://www.youtube.com/embed/wSKE3A40SIk" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
                                    </div>
                                </div>
                            </div>
@@ -535,7 +627,18 @@
             <!--表格ed-->
 
     </div>
-    <!--container主架構ed-->
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
 
 </html>
