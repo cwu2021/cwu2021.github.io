@@ -134,14 +134,13 @@
 
 
                             //banner戳記
-                            var banner_final_win = data.taichung_vote_for_main.elections;
-                            if (banner_final_win == 4) {
-                                $(".win2").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/vote.png?v=_prd">');
-                            }
-                            if (banner_final_win == 5) {
-                                $(".win").html('<img src="https://news.tvbs.com.tw/events/election20220109/images/vote.png?v=_prd">');
-                            }
-                            //banner戳記 end
+                        var banner_final_win = data.vote_for_main.elections;
+                        var search_pattern_win1 = 'header .' + city_name + ' .name_box .name_box1 .win';
+                        var search_pattern_win2 = 'header .' + city_name + ' .name_box .name_box1 .win2';
+                        if (banner_final_win == 1) {
+                            $(search_pattern_win1).html('<img src="events/images/vote.png?v=_prd">');
+                        } else if (banner_final_win == 2) {
+                            $(search_pattern_win2).html('<img src="events/images/vote.png?v=_prd">');                            //banner戳記 end
                             //banner台中票數 end
                             //罷免票數
                             var wanhua_votes_total = [0, 0];
