@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="events/css/election2022.css?v=_prd" media="screen">
+    <!--js Link-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="events/js/countup.js?v=_prd"></script>
+    <meta charset="utf-8">
+
+    <!--js-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*gotop*/
+            var $window = $(window);
+            var $nav_top = $('header').offset().top;
+
+            function scroll() {
+                var $header_h = $('header').height();
+                if ($window.width() < 768) {
+                    if ($window.scrollTop() > $nav_top) {
+                        $('.header_fixed').css({ height: $header_h });
+                        $('header').css({ position: 'fixed' });
+                    } else {
+                        $('.header_fixed').css({ height: 0 });
+                        $('header').css({ position: 'relative' });
+                    }
+                } else {
+                    $('.header_fixed').css({ height: 0 });
+                    $('header').css({ position: 'relative' });
+                }
+
+                //gototop
+                if ($window.scrollTop() > 50) {
+                    $('#back').show();
+                } else {
+                    $('#back').hide();
+                }
+
+            }
+            $window.scroll(function () { scroll(); });
+            $window.resize(function () { scroll(); });
+            var $el = $(scrollableElement('html', 'body'));
+            var speed = 550;
+            var $iconTOP = $('#back-img1');
+            var $icon_rbtn = $('.r_btn');
+
+            $($iconTOP).click(function (event) {
+                event.preventDefault();
+                $el.stop().animate({ scrollTop: -50 }, speed);
+            });
+            // 透過scrollTop檢測可用元素的函數// http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links#update4
+            function scrollableElement() {
+                var i, len, el, $el, scrollable;
+                for (i = 0, len = arguments.length; i < len; i++) {
+                    el = arguments[i];
+                    $el = $(el);
+                    if ($el.scrollTop() > 0) {
+
+                        return el;
+                    } else {
+                        $el.scrollTop(1);
+                        scrollable = $el.scrollTop() > 0;
+                        $el.scrollTop(0);
+                        if (scrollable) {
+                            return el;
+                        }
+                    }
+                }
+                return [];
+            }
+            /*--------------------------------------------------------- */
+            //立委補選開票結果切換區域
+            $('nav .list li').each(function (i) {
+                $(this).click(function (i) {
+                    $('nav .list li').removeClass('act');
+                    $(this).addClass('act');
+                });
+            });
+
+            //
+            var ajax_data;
+            var counter = 10;
+            function refresh() {
+                var timestamp = new Date().getTime();
+                var url = "events/json/final_data.json?v=_prd&t=" + timestamp;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    datatype: "text",
+                    async: false,
+                    success: function (data) {
+                        counter = 10;
+                        //給開票結果表格使用
+                        ajax_data = data;
+
+                        //banner台中票數
+                        //跑數字   
+                        var
+                            options = {
+                                useEasing: true,
+                                useGrouping: true,
+                                separator: ',',
+                                decimal: '.',
+                            };
+                        var votes_total = [0, 0];
+                        var votes_num = [0, 0];
+                        //票數加總
+
+                        var votes_sum = 0;
+                        for (var i = 0; i < votes_num.length; i++) {
+                            votes_sum += votes_num[i];
+                        };
+                        var votes_total_percent = new Array();
+                        var votes_percent = new Array();
+
+
+                        //罷免票數
+                        var wanhua_votes_total = [0, 0];
+                        var wanhua_votes_num = [0, 0];
+                        wanhua_votes_total = [data.recall.yes_vote, data.recall.no_vote];
+                        //票數加總
+                        var wanhua_votes_total_sum = 0;
+                        var wanhua_votes_sum = 0;
+                        for (var i = 0; i < wanhua_votes_num.length; i++) {
+                            wanhua_votes_total_sum += wanhua_votes_total[i];
+                            wanhua_votes_sum += wanhua_votes_num[i];
+                        };
+                        var wanhua_votes_total_percent = new Array();
+                        var wanhua_votes_percent = new Array();
+
+                        //罷免票數若為0，隱藏區塊
+                        $('.bt_num').each(function (i) {
+                            if (wanhua_votes_total[i] == 0) {
+                                $("#bt_num0").hide();
+                                $("#bt_num1").hide();
+                            } else {
+                                $("#bt_num0").show();
+                                $("#bt_num1").show();
+                                $(this).html(Math.round(wanhua_votes_total[i]));
+                                //跑數字   
+                                var demo = new CountUp('bt_num' + i, 0, Math.round(wanhua_votes_total[i]), 0, 1.5, options);
+                                if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+
+                            }
+
+                        });
+
+
+                        //罷免戳記
+                        if (data.recall.recall == "1") {
+                            $(".stamp").html('<img src="events/images/stamp1.png?v=_prd">');
+                        } else if (data.recall.recall == "2") {
+                            $(".stamp").html('<img src="events/images/stamp2.png?v=_prd">');
+                        }
+
+
+                        //最後更新時間
+                        $('.time2').html('最後更新時間： ' + data.now + '<br>( 網頁於每<span class="ten_sec_limit">' + counter + '</span>秒自動更新 )');
+
+
+                        //台中表格
+                        var taichung1 = data.taichung_vote.all;
+                        var taichung2 = data.taichung_vote.shalu;
+                        var taichung3 = data.taichung_vote.longjing;
+                        var taichung4 = data.taichung_vote.dadu;
+                        var taichung5 = data.taichung_vote.wuri;
+                        var taichung6 = data.taichung_vote.wufong;
+                        var taichung_array = [taichung1, taichung2, taichung3, taichung4, taichung5, taichung6];
+                        var now_choose = $(".tab_box").find(".act").index(); //抓取所選擇的區域index
+                        //跑數字   
+                        var taichung_votes_total = [0, 0];
+                        var taichung_votes_num = [0, 0];
+                        taichung_votes_total = [taichung_array[now_choose].no1_vote, taichung_array[now_choose].no2_vote, taichung_array[now_choose].no3_vote, taichung_array[now_choose].no4_vote, taichung_array[now_choose].no5_vote];
+
+                        //票數加總
+                        var taichung_votes_total_sum = 0;
+                        var taichung_votes_sum = 0;
+                        for (var i = 0; i < taichung_votes_num.length; i++) {
+                            taichung_votes_total_sum += votes_total[i];
+                            taichung_votes_sum += votes_num[i];
+                        };
+                        var taichung_votes_total_percent = new Array();
+                        var taichung_votes_percent = new Array();
+
+
+                        $('.num3').each(function (i) {
+                            $(this).html(Math.round(taichung_votes_total[i]));
+                            //跑數字   
+                            var demo = new CountUp('final_num_' + i, 0, Math.round(taichung_votes_total[i]), 0, 1.5, options);
+                            if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                        });
+
+                        //台中表格 end
+                        //台中表格當選戳記&表格顯示
+                        if (data.taichung_vote.elections != 0) {
+                            var final_win = parseInt(data.taichung_vote.elections);
+                            //台中表格戳記
+                            $("tr:nth-child(" + (final_win + 1) + ") .ok").html('<img src="events/images/vote.png?v=_prd">');
+
+
+                            //表格顯示
+                            $(".taichung_table").show();
+                        } else {
+                            //表格隱藏
+                            $(".taichung_table").hide();
+                        }
+                    }
+                });
+            }
+
+            function refresh_news() {
+                var timestamp = new Date().getTime();
+                var url = "events/json/1.json";
+                //var url = "https://www.ntdtv.com.tw/json
+                //var url = "events/json/final_data.json?v=_prd&t=" + timestamp;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    datatype: "text",
+                    async: false,
+                    success: function (data) {
+                        var issue_array = [];
+                        //議題包&playlist區塊
+                        var issue_list = "";
+                        if (data.data != undefined) {
+                            issue_array.push(data.data);
+                        }
+
+                        catid = 1175
+                        big_title = "測試大選123"
+                        issue_list += '<div class="box"><div class="title_box"><h2 class="title">' + big_title + '</h2></div><div class="list1';
+                        issue_list += '"><ul>';
+                        for (var i = 0; i < issue_array.length && i < 1; i++) {
+                            for (var j = 0; j < issue_array[i].length && j < 6; j++) {
+                                var timestamp = issue_array[i][j].attributes.article_date_created * 1000;
+                                var vdate = new Date(timestamp);
+                                issue_list += '<li><a href="https://www.ntdtv.com.tw' + issue_array[i][j].attributes.article_uri + '" target="_blank">';
+                                vimg = issue_array[i][j].attributes.article_thumbnail_src["data-src-medium"];
+                                issue_list += '<div class="img">' + '<img src="' + vimg + '"></div>'
+                                issue_list += '<div class="txt"><h3>' + issue_array[i][j].attributes.article_headline + '</h3><div class="time">' + vdate.getFullYear() + '-' + (vdate.getMonth() + 1) + '-' + vdate.getDate() + ' ' + vdate.getHours() + ":" + vdate.getMinutes() + ":" + vdate.getSeconds() + '</div></div></a></li>';
+                            }
+                        }
+                        issue_list += '</ul></div>';
+                        issue_list += '<div class="more_box"><div class="more"><a href="https://www.ntdtv.com.tw/topic/category/id/' + catid + '"' + '"target="_blank"><p>看更多</p></a></div></div></div>';
+
+                        //每次refresh 清空完再重新append子元素
+                        $(".issue_playlist").empty();
+                        $(".issue_playlist").append(issue_list);
+                    }
+                });
+            }
+
+            function refresh_city(city_name) {
+                var timestamp = new Date().getTime();
+                var url = "events/json/final_data_" + city_name + ".json?v=_prd&t=" + timestamp;
+
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    datatype: "text",
+                    async: false,
+                    success: function (data) {
+                        var
+                            options = {
+                                useEasing: true,
+                                useGrouping: true,
+                                separator: ',',
+                                decimal: '.',
+                            };
+                        var votes_total = [0, 0];
+                        var votes_num = [0, 0];
+                        votes_total = [data.vote_for_main.no1_vote_total, data.vote_for_main.no2_vote_total];
+                        //票數加總
+                        var votes_total_sum = 0;
+                        var votes_sum = 0;
+                        for (var i = 0; i < votes_num.length; i++) {
+                            votes_total_sum += votes_total[i];
+                            votes_sum += votes_num[i];
+                        };
+                        var votes_total_percent = new Array();
+                        var votes_percent = new Array();
+                        var search_pattern = 'header .' + city_name + ' .name_box .num';
+
+                        $(search_pattern).each(function (i) {
+                            //banner各自票數不為0，才會顯示
+                            if (votes_total[i] !== 0 && votes_total[i] !== "0") {
+                                $(this).html('<span id=nu2_' + city_name + i + '>' + Math.round(votes_total[i]) + '</span>');
+                                //跑數字   
+                                var demo = new CountUp('nu2_' + city_name + i, 0, Math.round(votes_total[i]), 0, 1.5, options);
+                                if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                            }
+
+                        });
+
+                        //banner戳記
+                        var banner_final_win = data.vote_for_main.elections;
+                        var search_pattern_win1 = 'header .' + city_name + ' .name_box .name_box1 .win';
+                        var search_pattern_win2 = 'header .' + city_name + ' .name_box .name_box1 .win2';
+                        if (banner_final_win == 1) {
+                            $(search_pattern_win1).html('<img src="events/images/vote.png?v=_prd">');
+                        } else if (banner_final_win == 2) {
+                            $(search_pattern_win2).html('<img src="events/images/vote.png?v=_prd">');
+                        }
+                    }
+                });
+            }
+
+            function refresh_all_city() {
+                refresh_city("Taipei");
+                refresh_city("NewTaipei");
+            }
+
+            //每秒執行 倒數10秒 網頁自動更新時間
+            var countdown_func = setInterval(countdown, 1000);
+            //var countdown_func = setInterval(countdown, 100000000000000);
+            function countdown() {
+                counter--;
+                $(".ten_sec_limit").html(counter);
+                if (counter == 0) {
+                    counter = 10;
+                    //10秒一到 重拉一次資料
+                    refresh();
+                    refresh_all_city();
+                    refresh_news();
+                }
+
+            }
+
+            //票數更新 按鈕
+            $(".btn").click(function () {
+                refresh();
+                refresh_all_city();
+                refresh_news();
+            })
+
+            //台中表格區域click
+            $(".tab_box .tab").click(function () {
+                var eq_1 = $(this).index();
+                var taichung1 = ajax_data.taichung_vote.all;
+                var taichung2 = ajax_data.taichung_vote.shalu;
+                var taichung3 = ajax_data.taichung_vote.longjing;
+                var taichung4 = ajax_data.taichung_vote.dadu;
+                var taichung5 = ajax_data.taichung_vote.wuri;
+                var taichung6 = ajax_data.taichung_vote.wufong;
+                var taichung_array = [taichung1, taichung2, taichung3, taichung4, taichung5, taichung6];
+
+                //跑數字   
+                var
+                    options = {
+                        useEasing: true,
+                        useGrouping: true,
+                        separator: ',',
+                        decimal: '.',
+                    };
+                var taichung_votes_total = [0, 0];
+                var taichung_votes_num = [0, 0];
+                taichung_votes_total = [taichung_array[eq_1].no1_vote, taichung_array[eq_1].no2_vote, taichung_array[eq_1].no3_vote, taichung_array[eq_1].no4_vote, taichung_array[eq_1].no5_vote];
+
+                //票數加總
+                var taichung_votes_total_sum = 0;
+                var taichung_votes_sum = 0;
+                for (var i = 0; i < taichung_votes_num.length; i++) {
+                    taichung_votes_total_sum += taichung_votes_total[i];
+                    taichung_votes_sum += taichung_votes_num[i];
+                };
+                var taichung_votes_total_percent = new Array();
+                var taichung_votes_percent = new Array();
+
+
+                $('.num3').each(function (i) {
+                    $(this).html(Math.round(taichung_votes_total[i]));
+                    //跑數字   
+                    var demo = new CountUp('final_num_' + i, 0, Math.round(taichung_votes_total[i]), 0, 1.5, options);
+                    if (!demo.error) { demo.start(); } else { console.error(demo.error); }
+                });
+
+
+                $(".tab_box div").removeClass("act"); //清掉原先的 已選取
+                $(this).addClass("act");
+            });
+
+            //document ready 直接抓資料下來
+            refresh();
+            refresh_all_city();
+            refresh_news();
+            //5分鐘整頁重整
+            setInterval(refresh2, 300000);
+            function refresh2() {
+                window.location.reload();
+            }
+        });
+
+
+    </script>
+    <!--js ed-->
+</head>
+
+<body class="gray">
+    <!--GO~Top-->
+    <div id="back">
+        <div id="back-img1">
+            <p class="btop">Top</p>
+        </div>
+    </div>
+    <!--GO~Top end-->
+    <!-- Swiper -->
+    <div class="container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href=""><img src="events/images/1200x628.png?v=_prd"></a>
+                    <header class="hbg1">
+                        <div class="NewTaipei">
+                            <div class="name_box">
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win"></div>
+                                            陳時中_新北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win2"></div>
+                                            蔣萬安_新北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="swiper-slide">
+                    <a href=""><img src="events/images/1200x628.png?v=_prd"></a>
+                    <header class="hbg1">
+                        <!--票數-->
+                        <div class="Taipei">
+                            <div class="name_box">
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win"></div>
+                                            陳時中_台北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                                <li>
+                                    <div class="name_box1">
+                                        <div class="name">
+                                            <div class="win2"></div>
+                                            蔣萬安_台北
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </li>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <!-- <div class="swiper-slide">Slide 3</div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <main>
+            <!--罷免-->
+            <div class="section gray">
+                <div class="box">
+                    <div class="man_box">
+                        <div class="bt_box">
+                            <div class="text_box">
+                                <div class="nabox">
+                                    <div class="btn">票數更新</div>
+                                    <div class="time2">最後更新時間：2021/12/24 11：58：14 <br>( 網頁於每10秒自動更新
+                                        )<br>※最後票數結果以中選會公告為準</div>
+                                </div>
+                            </div>
+                            <div class="small displayno">票數來源：開票過程來自新唐人報票/計票中心。結果依中選會公佈票數為準。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="nabox2-1">
+                    <div class="nabox2">
+                        <div class="btn">票數更新</div>
+                        <div class="time2">最後更新時間：2021/12/24 11:58:14 <br>( 網頁於每10秒自動更新 )</div>
+                    </div>
+                    <div class="small">票數來源：開票過程來自新唐人報票/計票中心。結果依中選會公佈票數為準。</div>
+                </div>
+                <!--end罷免-->
+                <!--更新-->
+            </div>
+            <div class="renew white">
+                <div class="section">
+                    <div class="box">
+                    </div>
+                </div>
+            </div>
+            <!--更新ed-->
+
+            <!--表格-->
+            <div class="section white taichung_table">
+                <div class="title_box">
+                    <div class="title">立委補選開票結果</div>
+                </div>
+                <div class="tab_box">
+                    <div class="tab act">全部</div>
+                    <div class="tab">沙鹿區</div>
+                    <div class="tab">龍井區</div>
+                    <div class="tab">大肚區</div>
+                    <div class="tab">烏日區</div>
+                    <div class="tab">霧峰區</div>
+                </div>
+
+                <table cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="tt">號次</td>
+                            <td class="tt"></td>
+                            <td class="tt">候選人</td>
+                            <td class="tt"></td>
+                            <td class="tt"></td>
+                            <td class="tt">得票數</td>
+                        </tr>
+                        <!--插入表格-->
+                        <!--插入表格ed-->
+                        <tr class="line2">
+                            <td class="no">1</td>
+                            <td class="logo2"><img src="events/images/icon4.png?v=_prd">
+                            </td>
+                            <td class="name_ca">張炯春</td>
+                            <td class="ok"></td>
+                            <td class="empty"></td>
+                            <td class="num3" id="final_num_0"></td>
+                        </tr>
+                        <tr class="line1">
+                            <td class="no">2</td>
+                            <td class="logo2"><img src="events/images/icon3.png?v=_prd">
+                            </td>
+                            <td class="name_ca">林金連</td>
+                            <td class="ok"></td>
+                            <td class="empty"></td>
+                            <td class="num3" id="final_num_1"></td>
+                        </tr>
+                        <tr class="line2">
+                            <td class="no">3</td>
+                            <td class="logo2"><img src="events/images/icon3.png?v=_prd">
+                            </td>
+                            <td class="name_ca">李昇翰</td>
+                            <td class="ok"></td>
+                            <td class="empty"></td>
+                            <td class="num3" id="final_num_2"></td>
+                        </tr>
+                        <tr class="line1">
+                            <td class="no">4</td>
+                            <td class="logo2"><img src="events/images/icon2.png?v=_prd">
+                            </td>
+                            <td class="name_ca">林靜儀</td>
+                            <td class="ok"></td>
+                            <td class="empty"></td>
+                            <td class="num3" id="final_num_3"></td>
+                        </tr>
+                        <tr class="line2">
+                            <td class="no">5</td>
+                            <td class="logo2"><img src="events/images/icon1.png?v=_prd">
+                            </td>
+                            <td class="name_ca">顏寬恒</td>
+                            <td class="ok"></td>
+                            <td class="empty"></td>
+                            <td class="num3" id="final_num_4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="small">※最終票數結果以中選會公告為準</div>
+                <div class="section">
+                    <div class="box">
+                        <div class="title_box">
+                            <h2 class="title">新唐人LIVE 24小時直播</h2>
+                            <div class="live">
+                                <div class="video_box">
+                                    <div class="live_box">
+                                    </div>
+                                    <div class="video">
+                                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wSKE3A40SIk"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section white issue_playlist"></div>
+            </div>
+            <!--表格ed-->
+    </div>
+
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</body>
+
+</html>
