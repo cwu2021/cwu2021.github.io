@@ -659,7 +659,10 @@ header .name_box {
 	overflow: hidden;
 	bottom: 20px;
 	display: flex;
-	justify-content: space-between;
+/* https://ithelp.ithome.com.tw/m/articles/10267398 */
+/*	justify-content: space-between; */
+	justify-content: space-evenly;
+/*	justify-content: space-around(can use); */
 }
 
 header .name_box li {
