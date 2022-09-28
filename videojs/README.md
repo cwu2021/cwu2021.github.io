@@ -1,3 +1,6 @@
+# Toy blockchain written in javascript
+https://sgoedecke.github.io/blockchain-js-demo/
+# 計數特效
 countUp.js 是純粹的數字滾動特效，沒有實際的計數功能，只是朝向指定的數字快速滾動而已。資料本身是一套固定的json，這是TVBS自行產生的而非中選會的資料結構。用靜態的網頁概念來說，其實就是一套固定的資料，後台每5秒產生一個同樣的json覆蓋掉原本的json，然後網頁自動刷新選票表格給讀者看。
 https://news.tvbs.com.tw/events/election20220109/json/final_data.json
 
