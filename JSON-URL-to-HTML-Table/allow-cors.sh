@@ -22,3 +22,7 @@ location / {
 EOF
 service nginx reload
 # https://blog.gtwang.org/web-development/chrome-configuration-for-access-control-allow-origin/
+# CORS testing.
+# https://ithelp.ithome.com.tw/m/articles/10241034
+# https://stackoverflow.com/questions/51426683/how-to-test-cors-header
+# http://test-cors.org/
