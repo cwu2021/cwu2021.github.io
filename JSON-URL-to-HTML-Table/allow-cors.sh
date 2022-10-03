@@ -21,3 +21,4 @@ location / {
 }
 EOF
 service nginx reload
+# https://blog.gtwang.org/web-development/chrome-configuration-for-access-control-allow-origin/
