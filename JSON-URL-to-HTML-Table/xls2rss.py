@@ -1,4 +1,4 @@
-# xls to json modules
+# xlsx to xlsx modules
 import sys
 import argparse
 from openpyxl import load_workbook, Workbook
