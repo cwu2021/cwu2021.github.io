@@ -14,3 +14,20 @@ Change id, title, userId with the field names from your JSON output.
 # Unicode 編碼轉換工具
 <i>https://www.ifreesite.com/unicode-ascii-ansi.htm</i><br>
  For example: "\u937e\u6771\u9326\u906d\u570b\u6c11\u9ee8\u958b\u9664\u9ee8\u7c4d \u63da\u8a00\u53cd\u544a\u9ee8\u4e2d\u592e"
+# S3 Bucket Policy to make a specific sub folder public and everything else private?
+<i> https://stackoverflow.com/questions/21917769/s3-bucket-policy-to-make-a-specific-sub-folder-public-and-everything-else-privat </i> <br>
+<i> https://s3browser.com/working-with-amazon-s3-bucket-policies.aspx </i> <br>
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicRead",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::BUCKETNAME/*/128/*"
+        }
+    ]
+}
