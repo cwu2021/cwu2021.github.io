@@ -31,3 +31,7 @@ Change id, title, userId with the field names from your JSON output.
         }
     ]
 }
+# Add Google Analytics Tracking to a Website
+<i>https://chartio.com/learn/marketing-analytics/how-to-add-google-analytics-tracking-to-a-website/</i><br>
+<i>https://warwick.ac.uk/services/its/servicessupport/web/sitebuilder2/faqs/analytics/google/</i><br>
+Admin > Property (add new) > Tracking Info > Tracking Code
