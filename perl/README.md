@@ -1,5 +1,14 @@
 # AWS::Lambda
 https://metacpan.org/pod/AWS::Lambda
+- sudo apt install libnet-amazon-s3-perl
+## Use Cases of AWS Lambda
+www.edureka.co
+- Process data at scale
+- Run interactive web and mobile backends
+- Enable powerful ML insights
+- Create event-driven applications
+## Playing with Perl-based Lambda functions | by Andy Powell
+https://medium.com/foundations/playing-with-perl-based-lambda-functions-37c12ca01ae6
 # The Top 10 Programming Tasks That Perl Is Used For
 <i>https://www.activestate.com/blog/top-10-programming-tasks-that-perl-is-used-for/</i><br>
 In 2020, what are the tasks that Perl continues to be used for? Read on!
