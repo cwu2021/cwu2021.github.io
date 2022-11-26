@@ -31,6 +31,8 @@ Change id, title, userId with the field names from your JSON output.
         }
     ]
 }
+## and set ACL to prevent object listing for public bucket.
+ - https://stackoverflow.com/questions/9558831/how-to-prevent-directory-browsing-of-s3-bucket
 # Add Google Analytics Tracking to a Website
 <i>https://chartio.com/learn/marketing-analytics/how-to-add-google-analytics-tracking-to-a-website/</i><br>
 <i>https://warwick.ac.uk/services/its/servicessupport/web/sitebuilder2/faqs/analytics/google/</i><br>
