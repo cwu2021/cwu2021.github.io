@@ -10,3 +10,7 @@ https://news.tvbs.com.tw/events/election20220109/js/election20220109.js
 https://news.tvbs.com.tw/events/election20220109/css/election20220109.css
 
 在Chrome DevTools看這用了countUp.js的計數特效 (https://neohsuxoops.blogspot.com/2018/04/jscountupjs.html) 。類似這樣的需求重點不是資料視覺化，而比較偏向 front end development，屬於javascript/css/html這部分... https://news.tvbs.com.tw/events/election20220109
+
+# Performance insights: Get actionable insights on your website's performance
+https://developer.chrome.com/docs/devtools/performance-insights/
+ - More options More. > More tools > Performance insights.
