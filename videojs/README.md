@@ -14,3 +14,5 @@ https://news.tvbs.com.tw/events/election20220109/css/election20220109.css
 # Performance insights: Get actionable insights on your website's performance
 https://developer.chrome.com/docs/devtools/performance-insights/
  - More options More. > More tools > Performance insights.
+## Also waterfall perfoamance waiting of TTFB in Network tab.
+https://stackoverflow.com/questions/56894370/how-to-read-evaluate-script-timings-in-chrome-profiling-performance-tab
