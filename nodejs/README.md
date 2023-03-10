@@ -1,6 +1,10 @@
 # WordPress backup and migration
 ## Webflow as builder/CMS alternative
 https://webflow.com/templates/html/zaidan
+### How to add Google Forms to your website
+https://webflow.com/blog/google-forms
+### Forms | Webflow University
+https://university.webflow.com/lesson/intro-to-forms#how-to-add-a-form
 ## How to Convert HTML to WordPress Theme - Step by Step Guide
 https://www.cloudways.com/blog/html-to-wordpress/
 ## How to Migrate WordPress to Vultr - Vultr.com
