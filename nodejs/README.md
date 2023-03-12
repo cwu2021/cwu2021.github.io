@@ -10,6 +10,7 @@ https://www.cloudways.com/blog/html-to-wordpress/
 ## How to Migrate WordPress to Vultr - Vultr.com
 https://www.vultr.com/docs/how-to-migrate-wordpress-to-vultr/
 <br> https://www.quora.com/Which-is-a-better-hosting-for-a-business-website-Vultr-or-DigitalOcean
+<br> https://www.quora.com/I-have-a-blog-on-Bluehost-How-can-I-transfer-my-hosting-from-Bluehost-to-Godaddy
 ## UpdraftPlus外掛 ：完整備份＋還原 WordPress 網站（含搬家） | 犬哥網站
 https://frankknow.com/updraftplus-backup-restore/
 ## wget -E -m -p -k -e robots=off to get static pages
