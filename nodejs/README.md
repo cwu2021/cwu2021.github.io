@@ -1,3 +1,7 @@
+# nodejs setup & stats
+ - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04 
+ - https://www.w3schools.com/nodejs
+ - https://insights.stackoverflow.com/trends?tags=jquery%2Creactjs%2Cnode.js
 # WordPress backup and migration
 ## Webflow as builder/CMS alternative
 https://webflow.com/templates/html/zaidan
