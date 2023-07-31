@@ -125,6 +125,7 @@ www.books.com.tw
 目前還沒有中文的，可能要自行去研究了。
 
 信條2：價值創新
+ - Value Innovation is the simultaneous pursuit of differentiation and low cost, creating a leap in value for both buyers and the company. https://www.blueoceanstrategy.com/tools/value-innovation/
 ![Alt text](https://www.blueoceanstrategy.com/wp-content/uploads/2021/07/Value-Innovation-mobile-980x980.png "Optional title")
 節錄一小段話：
 
