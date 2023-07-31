@@ -49,6 +49,7 @@ UX 的精髓向來都是對 UX 概念有多理解、彈性應用及採用多種�
 
 所以我們需要使用 UX 的工具及思維，去挖掘及驗證產品的目標與方向。
 
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/1*sdir4iGhWxbl8m8Cg9CR7w@2x.jpeg "Optional title")
 
 圖片來源：https://uxdesign.cc/ux-design-doesnt-exist-cbc98a6058d5
 除了產品本身的需求之外，UX 工具及思考方式也能夠進行商業上的策略應用嗎？
@@ -72,6 +73,7 @@ UX 策略可以幫助產品部門快速的與商業、使用者需求以及科�
 
 第 2 章：UX 策略的四大信條
 
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*deGG8DdBAIYXTAqV.png "Optional title")
 圖片來源：https://userexperiencestrategy.com/
 身為 UX 設計師，我們常常被說介面不好用…等等，彷彿 UX 設計師就掌握了產品好用的生殺大權。但筆者進到公司內部當設計師之後，發現 UX 好不好用也跟這四個面向有關。
 
@@ -107,21 +109,23 @@ UX 策略可以幫助產品部門快速的與商業、使用者需求以及科�
 作者介紹了一些工具：
 
 1. 商業模式畫布 The Business Model Canvas
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*y640CRDJffXDFD3H.png "Optional title")
 
 這有一本書專門在教使用這個工具，有興趣的可以去看看。
 
+ - https://www.books.com.tw/products/0010567254
 獲利世代：自己動手，畫出你的商業模式
 簡單，卻威力無窮的工具「寫」計畫書，不如「發展」一個偉大的模式－－appWorks之初創投合夥人林之晨（Mr. Jamie）…
 www.books.com.tw
 
 2. Metromile
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*BIKis8S6VCHbmown.png "Optional title")
 
 改編自商業模式畫布，Ash Maurya，2010
 目前還沒有中文的，可能要自行去研究了。
 
 信條2：價值創新
+![Alt text](https://www.blueoceanstrategy.com/wp-content/uploads/2021/07/Value-Innovation-mobile-980x980.png "Optional title")
 節錄一小段話：
 
 當我們考慮價值創新時，它還將無摩擦的用戶體驗設計與誘人的價值主張相結合。
@@ -169,7 +173,7 @@ Airbnb 要求客戶改變他們的思維模式。他們把做一個好主人和�
 
 第 3 章：驗證價值主張
 商業家的確發現了一些商機，但我們也常發現，常常最後出來的成品跟原本想提供的價值差異頗大。這些對於 UX 來說無疑是種煩惱。
-
+![Alt text](https://image3-us-west.cloudokyo.cloud/image/v1/e9/c2/94/e9c29479-68fd-48e4-b968-349d54c85a3e/origin.webp "Optional title")
 舉個例子：如果 Airbnb 的價值主張就是成為旅人們在不同城市的「家」，那他們在進行 UX 的策略就要很小心要避免成為訂飯店平台的體驗。
 
 而這也是很多人常犯的錯誤。
@@ -181,7 +185,7 @@ https://www.managertoday.com.tw/articles/view/51464
 這時我們會使用一個叫做，價值主張畫布去審視你的商業價值、獲利方式及解決了什麼問題。價值越清晰、策略才會有辦法發揮真正的價值。
 
 價值主張畫布 →
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*HApipsBwyn2lbf_U.png "Optional title")
 
 圖片來源：https://bizthinking.com.tw/2021/10/26/%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%EF%BC%9A%E6%88%91%E5%80%91%E7%9A%84%E7%94%A2%E5%93%81%E8%A7%A3%E6%B1%BA%E4%BA%86%E4%BB%80%E9%BA%BC%E5%95%8F%E9%A1%8C%EF%BC%9F%E8%AB%87%E7%94%A2%E5%93%81%E5%83%B9/
 關於價值主張的書跟文章，網路上已經有很多資源可以自行研究看看。
@@ -193,10 +197,10 @@ https://www.managertoday.com.tw/articles/view/51464
 
 不算是 UX 設計師常做的競品分析方式。
 
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ZB2z1t1lpwANt4KTBaXjpw.png "Optional title")
 作者的競品分析截圖
 這篇文章會有更多競品分析的介紹：
-
+ - https://uxplanet.org/top-things-to-know-about-ux-competitive-analysis-d91689fd8b36
 Top Things to Know About UX Competitive Analysis
 One of the critical steps when developing a new product is finding out where you stand with the competition…
 uxplanet.org
@@ -209,7 +213,7 @@ uxplanet.org
 
 圖片來源：https://www.nngroup.com/articles/storyboards-visualize-ideas/
 建議這種概念性的東西都要多看看文章跟書才好。但光看 Template 就大概可以知道，裡面只能用非常簡短的文字描述問題，而不是長篇大論。
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*woB3B4vUx8BgpXKB.png "Optional title")
 
 圖片來源：https://www.nngroup.com/articles/storyboards-visualize-ideas/
 這邊就不多做解釋，請看圖片來源的網址。
@@ -234,7 +238,7 @@ uxplanet.org
 
 第 8 章：提升轉換的設計
 因為筆者看的書是第一版的，資訊稍稍舊了一些，我會建議想看這本書的人直接去看第二版最新修訂的書。
-
+![Alt text](https://miro.medium.com/v2/resize:fit:640/format:webp/0*EW8mMhnCtlJcYA2E.jpg "Optional title")
 
 新版是這樣子滴
 裡面放了很多新的概念及用法：
