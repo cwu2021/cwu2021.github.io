@@ -247,12 +247,13 @@ uxplanet.org
 
 商業漏斗
 
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*Y0w5xdUVg_rpCLbx.png "Optional title")
 圖片來源：https://contentsquare.com/blog/how-a-good-ux-plays-a-role-in-conversion-funnel-optimization/
 2. 流量成長駭客、流量成長設計、鉤癮模式（Hook Model）
 
 這三個概念分別都有不同的書可以詳讀。此書只是淺淺地提到這些。建議有興趣的朋友可以自行找找這些書籍來閱讀。
 
-
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/0*CAuI_dOt2Kt0SLwo.png "Optional title")
 Hook Model https://www.productplan.com/glossary/hook-model/
 3. 進行登陸頁面測試
 
