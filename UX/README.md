@@ -222,6 +222,8 @@ uxplanet.org
 
 第 6 章：開發原型，進行實驗
 作者的開發原型可不是大公司那種，有個專門的 UX 工程師幫你做了個擬真度超高的原型。ex. Figma, Adobe XD.
+ - Adobe bought Figma https://tw.news.yahoo.com/adobe%E9%87%8D%E9%87%91%E6%94%B6%E8%B3%BC-figma%EF%BC%8C%E7%B5%90%E6%9E%9C%E5%8D%BB%E6%98%AF%E5%B9%BE%E5%AE%B6%E6%AD%A1%E5%96%9C%E5%B9%BE%E5%AE%B6%E6%86%82-030804830.html
+ - Adobe Express vs Gimp
 
 請拋棄這種固定的觀念。原型的意思就是有很多種原型的方式，有 paper 的、有草稿線框的也有精美的 UI 的，實在是太多種了。
 
