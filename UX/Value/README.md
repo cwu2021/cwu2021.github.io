@@ -1,6 +1,11 @@
+# Business Model
+ - https://www.managertoday.com.tw/articles/view/29827
+ - https://www.managertoday.com.tw/articles/view/65862
+ - https://www.managertoday.com.tw/articles/view/59703
 # 價值主張年代 Value Proposition Design
 https://medium.com/mountain-birds-tw/%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%E5%B9%B4%E4%BB%A3-%E6%B7%B1%E5%85%A5%E5%95%86%E6%A5%AD%E6%A8%A1%E5%BC%8F-%E6%89%BE%E5%87%BA%E7%8D%B2%E5%88%A9%E6%A0%B8%E5%BF%83-77bfa3d01a9b <br>
 https://medium.com/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81-%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%E5%B9%B4%E4%BB%A3-a2f470ad3635 <br>
+
  - 價值主張圖 Canvas ｜設計、測試、建立與管理產品和服務的策略管理工具，可以與商業模式圖充分整合
  - 設計 Design ｜協助設計價值主張的技術
  - 測試 Test ｜決定測試項目，降低新價值主張的風險與不確定性，並評量計劃的進展
