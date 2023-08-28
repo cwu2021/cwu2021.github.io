@@ -2,6 +2,9 @@
  - https://www.managertoday.com.tw/articles/view/29827
  - https://www.managertoday.com.tw/articles/view/65862
  - https://www.managertoday.com.tw/articles/view/59703
+# BCG: PPM（Product Portfolio Management
+BCG 矩陣以相對占有率為橫軸（代表市場現況）、市場成長率為縱軸（代表市場未來潛力），將產品或事業單位分為瘦狗（Dog）、金牛（Cash Cows）、明星（Star）、問題（Question Mark）4 類，作為企業內部在評估現有產品組合與事業單位資源分配上的指引和判斷依據。
+ - https://www.managertoday.com.tw/glossary/view/145
 # 價值主張年代 Value Proposition Design
 ## p.161 改善現行價值主張，不大幅更改或影響基本的商業模式
  - 更新過時的產品和服務
