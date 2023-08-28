@@ -3,6 +3,16 @@
  - https://www.managertoday.com.tw/articles/view/65862
  - https://www.managertoday.com.tw/articles/view/59703
 # 價值主張年代 Value Proposition Design
+## p.161 改善現行價值主張，不大幅更改或影響基本的商業模式
+ - 更新過時的產品和服務
+ - 確保或維持價值適配
+ - 改善獲利潛力或成本結構
+ - 維持成長力道
+ - 解決顧客抱怨
+### 財務目標：年營收成長 0~15% (改善) vs >50% (創新)
+### 商業模式：幾無變化 vs 須快速調整或改變
+### 面對失敗的態度：看作是學習和檢視修改過程的一部分 vs 不是選項
+### 主要活動：搜尋、測試和評估 (ex. AWS) vs 改造、計畫和執行 (ex. Amazon Prime for VIP)
 https://medium.com/mountain-birds-tw/%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%E5%B9%B4%E4%BB%A3-%E6%B7%B1%E5%85%A5%E5%95%86%E6%A5%AD%E6%A8%A1%E5%BC%8F-%E6%89%BE%E5%87%BA%E7%8D%B2%E5%88%A9%E6%A0%B8%E5%BF%83-77bfa3d01a9b <br>
 https://medium.com/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81-%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%E5%B9%B4%E4%BB%A3-a2f470ad3635 <br>
 
