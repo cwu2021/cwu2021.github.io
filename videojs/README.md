@@ -16,7 +16,8 @@ https://developer.chrome.com/docs/devtools/performance-insights/
  - More options More. > More tools > Performance insights.
 ## developer tools->console 
  - eg. GJW has vodapi.cloudokyo.cloud ，Linode雲服務作影片上傳，加入白名單可正常上傳。
- - FLoC, Google’s New Tracking Method in Chrome https://spreadprivacy.com/block-floc-with-duckduckgo/## Also waterfall performance waiting of TTFB in Network tab.
+ - FLoC, Google’s New Tracking Method in Chrome https://spreadprivacy.com/block-floc-with-duckduckgo/
+## Also waterfall performance waiting of TTFB in Network tab.
 https://stackoverflow.com/questions/56894370/how-to-read-evaluate-script-timings-in-chrome-profiling-performance-tab
  1. Use a Content Delivery Network 
  2. Optimize the application code 
