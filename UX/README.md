@@ -6,6 +6,8 @@
  - https://hiverhq.com/blog/how-to-create-a-unique-value-proposition
  - https://www.obytes.com/blog/ux-strategy-for-business-growth
  - 《價值主張年代》深入商業模式 https://medium.com/mountain-birds-tw/%E5%83%B9%E5%80%BC%E4%B8%BB%E5%BC%B5%E5%B9%B4%E4%BB%A3-%E6%B7%B1%E5%85%A5%E5%95%86%E6%A5%AD%E6%A8%A1%E5%BC%8F-%E6%89%BE%E5%87%BA%E7%8D%B2%E5%88%A9%E6%A0%B8%E5%BF%83-77bfa3d01a9b
+ - 千田愛紗的日文課銷售三個月就突破銷售紀錄 https://www.facebook.com/share/p/1BrXKLLwio/
+ - 線上課2 個月賺 300 萬 https://www.facebook.com/share/p/1486Lf7Tyu/
 
 ## The birth of the Web
 https://home.cern/science/computing/birth-web
